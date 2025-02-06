@@ -10,11 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
             let value = this.innerText;
 
             if (value === "C") {
-                // Clear the entire input
                 Curr = "";
                 display.innerText = "";
             } else if (value === "Back") {
-                // Remove the last character from input
                 Curr = Curr.slice(0, -1);
                 display.innerText = Curr;
             } else if (value === "=") {
