@@ -69,9 +69,6 @@ button {
     color: white;
 }
 
-.equals {
-    grid-column: span 2;
-}
 
 .operator, .equals {
     background: orange;
