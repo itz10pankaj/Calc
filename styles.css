@@ -1,54 +1,99 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Center everything */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #f4f4f4;
+    flex-direction: column;
 }
+
+/* Heading styles */
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-right:20px
+}
+
+/* Calculator container */
 .calculator {
     display: grid;
-    grid-template-columns: repeat(4, 80px);
-    grid-template-rows: auto repeat(5, 80px);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto repeat(5, 60px);
     gap: 5px;
     background: #ccc;
-    padding: 10px;
+    padding: 15px;
     border-radius: 10px;
+    width: 320px;
+    max-width: 90%;
 }
+
+/* Display screen */
 .display {
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     grid-column: span 4;
     height: 60px;
     font-size: 24px;
     padding: 0 10px;
     background: white;
     border-radius: 5px;
+    border: 1px solid #aaa;
 }
+
+/* Button styles */
 button {
-    font-size: 24px;
+    font-size: 20px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    text-align: center;
+    padding: 10px;
 }
+
+/* Special button styles */
 .clear {
     grid-column: span 3;
     background: red;
     color: white;
 }
-.empty{
-    background: green;
-  
-}
-.equals {
+.equals{
+    
     grid-column: span 2;
+}
+.operator, .equals {
     background: orange;
     color: white;
 }
-.operator {
-    background: orange;
+
+.empty {
+    background: green;
     color: white;
 }
-.number {
+
+.number, .zero {
     background: white;
+}
+
+/* Responsive Design */
+@media (max-width: 400px) {
+    .calculator {
+        width: 100%;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
 }
