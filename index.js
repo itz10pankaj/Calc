@@ -2,38 +2,42 @@ document.addEventListener("DOMContentLoaded", function () {
     let display = document.querySelector(".display");
     let buttons = document.querySelectorAll("button");
 
-    let Curr = "";
+    let currInput = "";
     let operators = ["+", "-", "*", "/"];
 
-    buttons.forEach((button) => {
+    for (let button of buttons) {
         button.addEventListener("click", function () {
             let value = this.innerText;
+            switch (value) {
+                case "C":
+                    currInput = "";
+                    display.innerText = "";
+                    break;
 
-            if (value === "C") {
-                Curr = "";
-                display.innerText = "";
-            } else if (value === "Back") {
-                Curr = Curr.slice(0, -1);
-                display.innerText = Curr;
-            } else if (value === "=") {
-                try {
-                    Curr = eval(Curr).toString();
-                    display.innerText = Curr;
-                } catch {
-                    display.innerText = "Error";
-                    Curr = "";
-                }
-            } else {
-                if (
-                    operators.includes(value) &&
-                    (Curr === "" || operators.includes(Curr.slice(-1)))
-                ) {
-                    return;
-                }
-
-                Curr += value;
-                display.innerText = Curr;
+                case "Back":
+                    currInput = currInput.slice(0, -1);
+                    display.innerText = currInput;
+                    break;
+                    
+                case "=":
+                    try {
+                        currInput = eval(currInput).toString();
+                        display.innerText = currInput;
+                    } catch {
+                        display.innerText = "Error";
+                        currInput = "";
+                    }
+                    break;
+                default:
+                    if (
+                        operators.includes(value) &&
+                        (currInput === "" || operators.includes(currInput.slice(-1)))
+                    ) {
+                        return;
+                    }
+                    currInput += value;
+                    display.innerText = currInput;
             }
         });
-    });
+    }
 });
